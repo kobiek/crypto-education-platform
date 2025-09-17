@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Blockchain Demo - Crypto Made Simple</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .block {
+            transition: all 0.3s ease;
+        }
+        .block:hover {
+            transform: scale(1.05);
+        }
+        .chain-link {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-blue-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-cube text-purple-600 mr-3"></i>
+                Interactive Blockchain Demo
+            </h1>
+            <p class="text-xl text-gray-600">
+                Build your own blockchain and see how it works - just like LEGO blocks!
+            </p>
+        </div>
+
+        <!-- Demo Area -->
+        <div class="max-w-6xl mx-auto">
+            <!-- Instructions -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-play-circle text-green-500 mr-2"></i>
+                    How to Play
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span class="text-white font-bold">1</span>
+                        </div>
+                        <p class="text-sm text-gray-600">Click "Add Block" to create a new block</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span class="text-white font-bold">2</span>
+                        </div>
+                        <p class="text-sm text-gray-600">Watch how blocks connect together</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-2">
+                            <span class="text-white font-bold">3</span>
+                        </div>
+                        <p class="text-sm text-gray-600">See how the chain becomes more secure</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blockchain Visualization -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-900">Your Blockchain</h3>
+                    <div class="flex space-x-4">
+                        <button id="addBlock" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200">
+                            <i class="fas fa-plus mr-2"></i>Add Block
+                        </button>
+                        <button id="resetChain" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200">
+                            <i class="fas fa-refresh mr-2"></i>Reset
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Blockchain Display -->
+                <div id="blockchain" class="flex flex-wrap justify-center items-center space-x-4 space-y-4">
+                    <!-- Blocks will be added here dynamically -->
+                </div>
+                
+                <!-- Chain Info -->
+                <div class="mt-6 text-center">
+                    <div class="text-2xl font-bold text-gray-900">
+                        <span id="blockCount">0</span> Blocks
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        Each block makes the chain more secure!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Educational Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- What is a Blockchain? -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                        <i class="fas fa-question-circle text-blue-500 mr-2"></i>
+                        What is a Blockchain?
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-cube text-blue-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Like LEGO Blocks</p>
+                                <p class="text-gray-600 text-sm">Each block contains information and connects to the next one</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-lock text-green-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Can't Be Changed</p>
+                                <p class="text-gray-600 text-sm">Once a block is added, it can't be modified or removed</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-eye text-purple-600 text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900">Everyone Can See</p>
+                                <p class="text-gray-600 text-sm">The entire chain is visible to everyone, making it transparent</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How It Works -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                        <i class="fas fa-cogs text-green-500 mr-2"></i>
+                        How It Works
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">1</span>
+                            </div>
+                            <p class="text-gray-700">Data is collected and put into a block</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">2</span>
+                            </div>
+                            <p class="text-gray-700">The block is verified by the network</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">3</span>
+                            </div>
+                            <p class="text-gray-700">The block is added to the chain</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">4</span>
+                            </div>
+                            <p class="text-gray-700">The chain becomes more secure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-World Examples -->
+            <div class="bg-white rounded-lg shadow-lg p-6 mt-8">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-globe text-purple-500 mr-2"></i>
+                    Real-World Examples
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-coins text-blue-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Cryptocurrency</h4>
+                        <p class="text-sm text-gray-600">Bitcoin and other digital currencies use blockchain to track transactions</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-vote-yea text-green-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Voting</h4>
+                        <p class="text-sm text-gray-600">Some countries use blockchain for secure and transparent voting</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-file-contract text-purple-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-semibold text-gray-900 mb-2">Contracts</h4>
+                        <p class="text-sm text-gray-600">Smart contracts automatically execute when conditions are met</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="text-center mt-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                    Ready to Learn More?
+                </h3>
+                <p class="text-lg text-gray-600 mb-6">
+                    This is just the beginning! Join our free course to learn everything about cryptocurrency.
+                </p>
+                <button class="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-700 transition duration-200 text-lg">
+                    <i class="fas fa-rocket mr-2"></i>Start Free Course
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let blockCount = 0;
+        const blockchain = document.getElementById('blockchain');
+        const blockCountDisplay = document.getElementById('blockCount');
+        const addBlockBtn = document.getElementById('addBlock');
+        const resetBtn = document.getElementById('resetChain');
+
+        // Block data for demonstration
+        const blockData = [
+            "Alice sends 5 Bitcoin to Bob",
+            "Bob sends 2 Bitcoin to Charlie",
+            "Charlie sends 1 Bitcoin to Alice",
+            "New transaction: 10 Bitcoin",
+            "Mining reward: 6.25 Bitcoin",
+            "Transaction fee: 0.001 Bitcoin",
+            "Smart contract execution",
+            "NFT purchase: CryptoPunk #1234",
+            "DeFi yield farming reward",
+            "Cross-chain bridge transaction"
+        ];
+
+        function createBlock(data, index) {
+            const block = document.createElement('div');
+            block.className = 'block bg-gradient-to-br from-blue-400 to-purple-500 text-white p-4 rounded-lg shadow-lg min-w-[200px] text-center';
+            
+            block.innerHTML = `
+                <div class="text-2xl font-bold mb-2">Block #${index}</div>
+                <div class="text-sm mb-2">${data}</div>
+                <div class="text-xs opacity-75">Hash: ${generateHash(index)}</div>
+                <div class="text-xs opacity-75">Previous: ${index > 1 ? generateHash(index - 1) : 'Genesis'}</div>
+            `;
+            
+            return block;
+        }
+
+        function generateHash(index) {
+            // Simple hash simulation
+            return Math.random().toString(36).substring(2, 8).toUpperCase();
+        }
+
+        function addBlock() {
+            if (blockCount < blockData.length) {
+                blockCount++;
+                const block = createBlock(blockData[blockCount - 1], blockCount);
+                blockchain.appendChild(block);
+                blockCountDisplay.textContent = blockCount;
+                
+                // Add chain link if not the first block
+                if (blockCount > 1) {
+                    const chainLink = document.createElement('div');
+                    chainLink.className = 'chain-link text-2xl text-gray-400';
+                    chainLink.innerHTML = '<i class="fas fa-link"></i>';
+                    blockchain.appendChild(chainLink);
+                }
+                
+                // Animate the new block
+                block.style.transform = 'scale(0)';
+                setTimeout(() => {
+                    block.style.transform = 'scale(1)';
+                }, 100);
+                
+                // Show success message
+                if (blockCount === 1) {
+                    showMessage('🎉 First block created! This is your genesis block.', 'success');
+                } else if (blockCount === 5) {
+                    showMessage('🚀 Great! Your blockchain is getting stronger with each block!', 'success');
+                } else if (blockCount === 10) {
+                    showMessage('🏆 Amazing! You\'ve built a complete blockchain!', 'success');
+                }
+            } else {
+                showMessage('🎯 You\'ve used all available block data! Try resetting to start over.', 'info');
+            }
+        }
+
+        function resetChain() {
+            blockchain.innerHTML = '';
+            blockCount = 0;
+            blockCountDisplay.textContent = '0';
+            showMessage('🔄 Blockchain reset! Ready to build again.', 'info');
+        }
+
+        function showMessage(text, type) {
+            const message = document.createElement('div');
+            message.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
+                type === 'success' ? 'bg-green-500' : 
+                type === 'info' ? 'bg-blue-500' : 'bg-gray-500'
+            } text-white`;
+            message.textContent = text;
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }
+
+        // Event listeners
+        addBlockBtn.addEventListener('click', addBlock);
+        resetBtn.addEventListener('click', resetChain);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                addBlock();
+            } else if (e.key === 'r' || e.key === 'R') {
+                e.preventDefault();
+                resetChain();
+            }
+        });
+
+        // Initial message
+        setTimeout(() => {
+            showMessage('👋 Welcome! Click "Add Block" to start building your blockchain!', 'info');
+        }, 1000);
+    </script>
+</body>
+</html>

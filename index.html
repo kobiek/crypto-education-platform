@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Made Simple - Learn Blockchain Like a 12-Year-Old</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-white text-xl font-bold flex items-center">
+                            <i class="fas fa-coins mr-2"></i>
+                            Crypto Made Simple
+                        </h1>
+                    </div>
+                    <div class="hidden md:block ml-10">
+                        <div class="flex items-baseline space-x-4">
+                            <a href="#courses" class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium">Courses</a>
+                            <a href="#about" class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                            <a href="#pricing" class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                            <a href="#community" class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium">Community</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium">
+                        <i class="fas fa-sign-in-alt mr-1"></i>Login
+                    </button>
+                    <button class="bg-white text-purple-600 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100 transition duration-200">
+                        <i class="fas fa-rocket mr-1"></i>Start Learning
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="floating mb-8">
+                <i class="fas fa-graduation-cap text-6xl text-white opacity-80"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Learn Crypto Like a 12-Year-Old
+            </h1>
+            <p class="text-xl text-white mb-8 max-w-3xl mx-auto">
+                From blockchain basics to DeFi mastery - we make cryptocurrency education 
+                so simple that even a 12-year-old can understand it!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                <button class="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 text-lg">
+                    <i class="fas fa-play mr-2"></i>Start Free Course
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition duration-200 text-lg">
+                    <i class="fas fa-video mr-2"></i>Watch Demo
+                </button>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
+                <div class="text-center">
+                    <div class="text-3xl font-bold">10K+</div>
+                    <div class="text-sm opacity-80">Students</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">4.9★</div>
+                    <div class="text-sm opacity-80">Rating</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">5</div>
+                    <div class="text-sm opacity-80">Levels</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">24/7</div>
+                    <div class="text-sm opacity-80">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Why 10,000+ Students Choose Us
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We make complex crypto concepts simple through visual learning, 
+                    interactive exercises, and real-world examples.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card-hover bg-white p-8 rounded-xl shadow-lg border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-eye text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Visual Learning</h3>
+                    <p class="text-gray-600">Every concept illustrated with simple graphics, animations, and interactive demos</p>
+                </div>
+                
+                <div class="card-hover bg-white p-8 rounded-xl shadow-lg border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-gamepad text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Interactive & Fun</h3>
+                    <p class="text-gray-600">Gamified learning with achievements, badges, and hands-on exercises</p>
+                </div>
+                
+                <div class="card-hover bg-white p-8 rounded-xl shadow-lg border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Community Support</h3>
+                    <p class="text-gray-600">Join our friendly community of learners and get help when you need it</p>
+                </div>
+                
+                <div class="card-hover bg-white p-8 rounded-xl shadow-lg border border-gray-100 text-center">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-mobile-alt text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Learn Anywhere</h3>
+                    <p class="text-gray-600">Mobile-first design with offline access - learn on your phone, tablet, or computer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Your Learning Journey
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Start from absolute zero and become a crypto expert in 5 progressive levels
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Level 1 - Free -->
+                <div class="card-hover bg-white rounded-xl shadow-lg overflow-hidden border-2 border-green-200">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-seedling text-6xl mb-4"></i>
+                            <div class="text-2xl font-bold">Level 1</div>
+                            <div class="text-lg">Blockchain Basics</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-green-600">FREE</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Beginner</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Learn the Fundamentals</h3>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>What is a blockchain? (LEGO analogy)</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>How cryptocurrency works</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Wallets and addresses</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Mining and consensus</li>
+                        </ul>
+                        <button class="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition duration-200 font-semibold">
+                            Start Learning Free
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Level 2 - $97 -->
+                <div class="card-hover bg-white rounded-xl shadow-lg overflow-hidden border-2 border-blue-200">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-rocket text-6xl mb-4"></i>
+                            <div class="text-2xl font-bold">Level 2</div>
+                            <div class="text-lg">Getting Started</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-blue-600">$97</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Beginner</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Buy Your First Crypto</h3>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li><i class="fas fa-check text-blue-500 mr-2"></i>How to buy cryptocurrency</li>
+                            <li><i class="fas fa-check text-blue-500 mr-2"></i>Setting up wallets safely</li>
+                            <li><i class="fas fa-check text-blue-500 mr-2"></i>Understanding exchanges</li>
+                            <li><i class="fas fa-check text-blue-500 mr-2"></i>Security best practices</li>
+                        </ul>
+                        <button class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200 font-semibold">
+                            Enroll Now - $97
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Level 3 - $197 -->
+                <div class="card-hover bg-white rounded-xl shadow-lg overflow-hidden border-2 border-purple-200">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-purple-600 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-chart-line text-6xl mb-4"></i>
+                            <div class="text-2xl font-bold">Level 3</div>
+                            <div class="text-lg">Trading Fundamentals</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-purple-600">$197</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Intermediate</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Master Trading</h3>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li><i class="fas fa-check text-purple-500 mr-2"></i>Reading price charts</li>
+                            <li><i class="fas fa-check text-purple-500 mr-2"></i>Basic trading strategies</li>
+                            <li><i class="fas fa-check text-purple-500 mr-2"></i>Risk management</li>
+                            <li><i class="fas fa-check text-purple-500 mr-2"></i>Psychology of trading</li>
+                        </ul>
+                        <button class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition duration-200 font-semibold">
+                            Enroll Now - $197
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Level 4 - $297 -->
+                <div class="card-hover bg-white rounded-xl shadow-lg overflow-hidden border-2 border-orange-200">
+                    <div class="h-48 bg-gradient-to-r from-orange-400 to-orange-600 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-cogs text-6xl mb-4"></i>
+                            <div class="text-2xl font-bold">Level 4</div>
+                            <div class="text-lg">DeFi Deep Dive</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-orange-600">$297</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Advanced</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">DeFi Mastery</h3>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li><i class="fas fa-check text-orange-500 mr-2"></i>What is DeFi?</li>
+                            <li><i class="fas fa-check text-orange-500 mr-2"></i>Yield farming & staking</li>
+                            <li><i class="fas fa-check text-orange-500 mr-2"></i>Liquidity pools</li>
+                            <li><i class="fas fa-check text-orange-500 mr-2"></i>Smart contracts</li>
+                        </ul>
+                        <button class="w-full bg-orange-600 text-white py-3 px-4 rounded-lg hover:bg-orange-700 transition duration-200 font-semibold">
+                            Enroll Now - $297
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Level 5 - $497 -->
+                <div class="card-hover bg-white rounded-xl shadow-lg overflow-hidden border-2 border-red-200">
+                    <div class="h-48 bg-gradient-to-r from-red-400 to-red-600 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-crown text-6xl mb-4"></i>
+                            <div class="text-2xl font-bold">Level 5</div>
+                            <div class="text-lg">Advanced Strategies</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-red-600">$497</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Expert</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Become an Expert</h3>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li><i class="fas fa-check text-red-500 mr-2"></i>Portfolio management</li>
+                            <li><i class="fas fa-check text-red-500 mr-2"></i>Advanced trading</li>
+                            <li><i class="fas fa-check text-red-500 mr-2"></i>NFT strategies</li>
+                            <li><i class="fas fa-check text-red-500 mr-2"></i>Building in Web3</li>
+                        </ul>
+                        <button class="w-full bg-red-600 text-white py-3 px-4 rounded-lg hover:bg-red-700 transition duration-200 font-semibold">
+                            Enroll Now - $497
+                        </button>
+                    </div>
+                </div>
+
+                <!-- All-Access Pass -->
+                <div class="card-hover bg-white rounded-xl shadow-lg overflow-hidden border-2 border-yellow-400">
+                    <div class="h-48 bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-star text-6xl mb-4"></i>
+                            <div class="text-2xl font-bold">All-Access</div>
+                            <div class="text-lg">Lifetime Pass</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-2xl font-bold text-yellow-600">$997</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Best Value</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">Everything Included</h3>
+                        <ul class="text-gray-600 space-y-2 mb-6">
+                            <li><i class="fas fa-check text-yellow-500 mr-2"></i>All 5 levels</li>
+                            <li><i class="fas fa-check text-yellow-500 mr-2"></i>Lifetime access</li>
+                            <li><i class="fas fa-check text-yellow-500 mr-2"></i>1-on-1 coaching</li>
+                            <li><i class="fas fa-check text-yellow-500 mr-2"></i>Exclusive community</li>
+                        </ul>
+                        <button class="w-full bg-yellow-600 text-white py-3 px-4 rounded-lg hover:bg-yellow-700 transition duration-200 font-semibold">
+                            Get All-Access - $997
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    See How Simple It Really Is
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Try our interactive blockchain demo - no signup required!
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="bg-gray-50 p-8 rounded-xl">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Blockchain Explained with LEGO</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold">1</div>
+                                <div>
+                                    <div class="font-semibold">Each block is like a LEGO piece</div>
+                                    <div class="text-gray-600">It contains information and connects to the next piece</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-bold">2</div>
+                                <div>
+                                    <div class="font-semibold">Once connected, it can't be broken</div>
+                                    <div class="text-gray-600">The chain becomes stronger and more secure</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center text-white font-bold">3</div>
+                                <div>
+                                    <div class="font-semibold">Everyone can see the chain</div>
+                                    <div class="text-gray-600">But only you can add your own blocks</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-purple-600 text-white py-4 px-6 rounded-lg hover:bg-purple-700 transition duration-200 font-semibold text-lg">
+                        <i class="fas fa-play mr-2"></i>Try Interactive Demo
+                    </button>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-100 to-blue-100 p-8 rounded-xl">
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                            <i class="fas fa-cube text-6xl text-purple-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">Build Your Own Blockchain</h3>
+                        <p class="text-gray-600 mb-6">
+                            In our interactive demo, you'll build a simple blockchain 
+                            and see how transactions work in real-time.
+                        </p>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <div class="text-2xl font-bold text-purple-600">5 min</div>
+                                <div class="text-sm text-gray-600">Duration</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <div class="text-2xl font-bold text-purple-600">Free</div>
+                                <div class="text-sm text-gray-600">Cost</div>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow">
+                                <div class="text-2xl font-bold text-purple-600">Fun</div>
+                                <div class="text-sm text-gray-600">Experience</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    What Our Students Say
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Real stories from real people who learned crypto with us
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900">Sarah, 14</div>
+                            <div class="text-gray-600 text-sm">Student</div>
+                        </div>
+                    </div>
+                    <div class="text-gray-600 mb-4">
+                        "I thought crypto was too complicated for me, but this course made it so simple! 
+                        The LEGO analogy really helped me understand blockchain."
+                    </div>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-green-600"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900">Mike, 35</div>
+                            <div class="text-gray-600 text-sm">Engineer</div>
+                        </div>
+                    </div>
+                    <div class="text-gray-600 mb-4">
+                        "Finally, a crypto course that doesn't assume you're already an expert! 
+                        The visual explanations are incredible."
+                    </div>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-purple-600"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-gray-900">Lisa, 28</div>
+                            <div class="text-gray-600 text-sm">Teacher</div>
+                        </div>
+                    </div>
+                    <div class="text-gray-600 mb-4">
+                        "I'm using this to teach my students about money and technology. 
+                        They love the interactive demos and games!"
+                    </div>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-bg py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                Ready to Learn Crypto the Simple Way?
+            </h2>
+            <p class="text-xl text-white mb-8 max-w-3xl mx-auto">
+                Join 10,000+ students who are already mastering cryptocurrency. 
+                Start with our free course and see how easy it really is!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-200 text-lg">
+                    <i class="fas fa-rocket mr-2"></i>Start Learning Free
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition duration-200 text-lg">
+                    <i class="fas fa-phone mr-2"></i>Schedule a Call
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-coins mr-2"></i>
+                        Crypto Made Simple
+                    </h3>
+                    <p class="text-gray-400 mb-4">
+                        Making cryptocurrency education accessible, fun, and profitable for everyone.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Courses</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Blockchain Basics (Free)</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Getting Started ($97)</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Trading Fundamentals ($197)</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">DeFi Deep Dive ($297)</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Community</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Privacy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Crypto Made Simple. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple interactive demo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Demo button functionality
+            const demoButtons = document.querySelectorAll('button');
+            demoButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (this.textContent.includes('Demo') || this.textContent.includes('Try')) {
+                        alert('🎉 Demo coming soon! This would open an interactive blockchain simulation where you can build your own chain with LEGO blocks!');
+                    } else if (this.textContent.includes('Start Learning') || this.textContent.includes('Enroll')) {
+                        alert('🚀 Redirecting to course enrollment... This would take you to the course platform!');
+                    }
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
